@@ -1,0 +1,39 @@
+{
+  "name": "catbox-s3",
+  "description": "Amazon S3 adapter for catbox",
+  "version": "0.1.0",
+  "author": "Frederic Hemberger (http://frederic-hemberger.de)",
+  "main": "index.js",
+  "scripts": {
+    "jshint": "find . -name '*.js' \\! -path './node_modules/*' -exec ./node_modules/.bin/jshint {} \\;",
+    "lab": "./node_modules/.bin/lab -v -I defaults,NODE_CONFIG",
+    "coverage": "./node_modules/.bin/lab -c -r html -o coverage.html",
+    "test": "npm run jshint; npm run lab"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fhemberger/catbox-s3"
+  },
+  "keywords": [
+    "amazon",
+    "aws",
+    "cache",
+    "catbox",
+    "s3"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fhemberger/catbox-s3/issues"
+  },
+  "homepage": "https://github.com/fhemberger/catbox-s3",
+  "dependencies": {
+    "aws-sdk": "^2.0.17",
+    "hoek": "2.x.x",
+    "request": "^2.42.0"
+  },
+  "devDependencies": {
+    "catbox": "3.x.x",
+    "jshint": "2.x.x",
+    "lab": "4.x.x"
+  }
+}
