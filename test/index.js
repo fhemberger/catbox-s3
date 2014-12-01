@@ -2,6 +2,7 @@
 
 // Load modules
 var Lab = require('lab');
+var Code = require('code');
 var Catbox = require('catbox');
 var S3 = require('..');
 
@@ -20,7 +21,7 @@ var describe = lab.describe;
 var it = lab.it;
 var before = lab.before;
 var after = lab.after;
-var expect = Lab.expect;
+var expect = Code.expect;
 
 
 describe('S3', function () {
@@ -172,7 +173,7 @@ describe('S3', function () {
                         expect(result).to.equal(null);
                         done();
                     });
-                }, 2000);
+                }, 1000);
             });
         });
     });
