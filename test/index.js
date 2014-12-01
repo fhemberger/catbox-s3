@@ -264,6 +264,23 @@ describe('S3', function () {
         done();
     });
 
+    it('supports empty keys', function (done) {
+        var client = new Catbox.Client(S3, options);
+        client.start(function (err) {
+            expect(err).to.not.exist();
+
+            var key = { id: '', segment: 'test' };
+            client.set(key, '123', 5000, function (err) {
+                expect(err).to.not.exist();
+                client.get(key, function (err, result) {
+                    expect(err).to.not.exist();
+                    expect(result.item).to.equal('123');
+                    done();
+                });
+            });
+        });
+    });
+
     describe('#start', function () {
 
         it('creates an empty client object', function (done) {
