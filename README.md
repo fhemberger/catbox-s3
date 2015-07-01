@@ -18,6 +18,9 @@ If you want to use catbox-s3 for binary data, you have to handle it manually in 
 
 ```javascript
 var Catbox = require('catbox');
+
+// On hapi server initialization:
+// 1) Create a new catbox client instance
 var cache  = new Catbox.Client(require('catbox-s3'), {
     accessKeyId     : /* ... */,
     secretAccessKey : /* ... */,
@@ -25,6 +28,14 @@ var cache  = new Catbox.Client(require('catbox-s3'), {
     bucket          : /* ... */
 });
 
+// 2) Inititalize the caching
+cache.start(function (err) {
+
+    if (err) { console.error(err); }
+    /* ... */
+});
+
+// Your route's request handler
 var handler = function (request, reply) {
 
     var cacheKey = {
