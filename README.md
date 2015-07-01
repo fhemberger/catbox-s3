@@ -8,7 +8,7 @@ Amazon S3 adapter for [catbox](https://github.com/hapijs/catbox).
 - `bucket` - the S3 bucket. You need to have write access for it.
 - `accessKeyId` - the Amazon access key.
 - `secretAccessKey` - the Amazon secret access key.
-- `region` - the Amazon S3 region. (Default: 'eu-west-1')
+- `region` - the Amazon S3 region. (If you don't specify a region, the bucket will be created in US Standard.)
 
 
 ### Caching binary data
@@ -26,18 +26,22 @@ var cache  = new Catbox.Client(require('catbox-s3'), {
 });
 
 var handler = function (request, reply) {
-    var cacheKey      = {
+
+    var cacheKey = {
         id      : /* cache item id */,
         segment : /* cache segment name */
     };
 
     cache.get(cacheKey, function (err, result) {
+
         if (result) {
             return reply(result.item).type(/* response content type */);
         }
 
-        yourBusinessLogic(function(err, data) {
-            cache.set(cacheKey, data, /* expiration in ms */, function(err) {
+        yourBusinessLogic(function (err, data) {
+
+            cache.set(cacheKey, data, /* expiration in ms */, function (err) {
+
                 /* ... */
             });
             reply(result.item).type(/* response content type */);

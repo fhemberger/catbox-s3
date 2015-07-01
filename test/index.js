@@ -10,9 +10,12 @@ var S3 = require('..');
 var options = {
     accessKeyId     : process.env.S3_ACCESS_KEY,
     secretAccessKey : process.env.S3_SECRET_KEY,
-    region          : process.env.S3_REGION || 'eu-west-1',
     bucket          : process.env.S3_BUCKET
 };
+
+if (process.env.S3_REGION) {
+    options.region = process.env.S3_REGION
+}
 
 
 // Test shortcuts
