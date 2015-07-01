@@ -32,19 +32,23 @@ var handler = function (request, reply) {
         segment : /* cache segment name */
     };
 
-    cache.get(cacheKey, function (err, result) {
-
-        if (result) {
-            return reply(result.item).type(/* response content type */);
-        }
-
-        yourBusinessLogic(function (err, data) {
-
-            cache.set(cacheKey, data, /* expiration in ms */, function (err) {
-
-                /* ... */
+    cache.start(function (err) {
+        /* ... handle err if it exists ... */
+        
+        cache.get(cacheKey, function (err, result) {
+    
+            if (result) {
+                return reply(result.item).type(/* response content type */);
+            }
+    
+            yourBusinessLogic(function (err, data) {
+    
+                cache.set(cacheKey, data, /* expiration in ms */, function (err) {
+    
+                    /* ... */
+                });
+                reply(result.item).type(/* response content type */);
             });
-            reply(result.item).type(/* response content type */);
         });
     });
 };
