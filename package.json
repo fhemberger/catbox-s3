@@ -32,9 +32,9 @@
     "request": "^2.42.0"
   },
   "devDependencies": {
-    "catbox": "4.x.x",
+    "catbox": "^4.x.x",
     "jshint": "2.x.x",
     "code": "^1.2.1",
-    "lab": "5.x.x"
+    "lab": "^5.17.0"
   }
 }
