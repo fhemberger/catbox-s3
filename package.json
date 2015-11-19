@@ -29,7 +29,7 @@
   "dependencies": {
     "aws-sdk": "2.2.4",
     "hoek": "3.0.4",
-    "request": "2.65.0"
+    "request": "2.67.0"
   },
   "devDependencies": {
     "catbox": "4.3.0",
