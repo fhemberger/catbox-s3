@@ -14,7 +14,7 @@ var options = {
 };
 
 if (process.env.S3_REGION) {
-    options.region = process.env.S3_REGION
+    options.region = process.env.S3_REGION;
 }
 
 

@@ -67,7 +67,7 @@ var handler = function (request, reply) {
 In order to run the tests, set the aforementioned options as environment variables:
 
 ```shell
-S3_ACCESS_KEY=<YOURKEY> S3_SECRET_KEY=<YOURSECRET> S3_BUCKET=<YOURBUCKET> npm test
+S3_ACCESS_KEY=<YOURKEY> S3_SECRET_KEY=<YOURSECRET> S3_REGION=<REGION> S3_BUCKET=<YOURBUCKET> npm test
 ```
 
 
