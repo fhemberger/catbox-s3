@@ -1,14 +1,14 @@
 {
   "name": "catbox-s3",
   "description": "Amazon S3 adapter for catbox",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Frederic Hemberger (http://frederic-hemberger.de)",
   "main": "index.js",
   "scripts": {
-    "jshint": "find . -name '*.js' \\! -path './node_modules/*' -exec ./node_modules/.bin/jshint {} \\;",
-    "lab": "./node_modules/.bin/lab -v -I defaults,NODE_CONFIG",
-    "coverage": "./node_modules/.bin/lab -c -r html -o coverage.html",
-    "test": "npm run jshint; npm run lab"
+    "lab": "NODE_ENV=test node node_modules/.bin/lab -L --lint-warnings-threshold 99999",
+    "test": "npm run lab -- test/index.js",
+    "coverage": "npm run lab -- -c",
+    "coverage:html": "npm run coverage -- -r html -o coverage.html"
   },
   "repository": {
     "type": "git",
@@ -34,7 +34,8 @@
   "devDependencies": {
     "catbox": "^7.0.0",
     "code": "^2.0.1",
-    "jshint": "^2.8.0",
+    "eslint-config-hapi": "^7.0.0",
+    "eslint-plugin-hapi": "^4.0.0",
     "lab": "^7.3.0"
   }
 }

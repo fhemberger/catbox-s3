@@ -1,4 +1,0 @@
-{
-    "extends": "../.jshintrc",
-    "maxstatements": 30
-}
