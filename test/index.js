@@ -83,7 +83,7 @@ describe('S3', () => {
     });
 
 
-    it.skip('buffers can be set and retrieved', (done) => {
+    it('buffers can be set and retrieved', (done) => {
 
         const buffer = new Buffer('string value');
         const client = new Catbox.Client(new S3(options));
@@ -92,7 +92,7 @@ describe('S3', () => {
 
             const key = { id: 'x', segment: 'test' };
 
-            client.set(key, buffer, 1000, (err) => {
+            client.set(key, buffer, 2000, (err) => {
 
                 expect(err).to.not.exist;
                 client.get(key, (err, result) => {
@@ -107,7 +107,7 @@ describe('S3', () => {
     });
 
 
-    it.skip('buffers are copied before storing', (done) => {
+    it('buffers are copied before storing', (done) => {
 
         const buffer = new Buffer('string value');
         const client = new Catbox.Client(new S3(options));
@@ -115,7 +115,7 @@ describe('S3', () => {
         client.start((err) => {
 
             const key = { id: 'x', segment: 'test' };
-            client.set(key, buffer, 1000, (err) => {
+            client.set(key, buffer, 2000, (err) => {
 
                 expect(err).to.not.exist;
                 client.get(key, (err, result) => {
@@ -521,7 +521,7 @@ describe('S3', () => {
             client.start((err) => {
 
                 const key = { id: 'x', segment: 'test' };
-                client.set(key, '123', 1000, (err) => {
+                client.set(key, '123', 2000, (err) => {
 
                     expect(err).to.not.exist;
                     client.get(key, (err, result) => {
