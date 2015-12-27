@@ -36,6 +36,6 @@
     "code": "^2.0.1",
     "eslint-config-hapi": "^8.0.0",
     "eslint-plugin-hapi": "^4.0.0",
-    "lab": "^8.0.0"
+    "lab": "^8.0.1"
   }
 }
