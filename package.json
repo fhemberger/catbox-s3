@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "catbox": "^7.0.0",
-    "code": "^2.0.1",
+    "code": "^2.1.0",
     "eslint-config-hapi": "^8.0.0",
     "eslint-plugin-hapi": "^4.0.0",
     "lab": "^8.0.0"
