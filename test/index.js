@@ -44,6 +44,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             expect(client.isReady()).to.equal(true);
             done();
         });
@@ -55,6 +56,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             expect(client.isReady()).to.equal(true);
             client.stop();
             expect(client.isReady()).to.equal(false);
@@ -68,6 +70,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             const key = { id: 'x', segment: 'test' };
             client.set(key, '123', 5000, (err) => {
 
@@ -90,6 +93,7 @@ describe('S3', () => {
 
         client.start((err) => {
 
+            expect(err).to.not.exist;
             const key = { id: 'x', segment: 'test' };
 
             client.set(key, buffer, 2000, (err) => {
@@ -114,6 +118,7 @@ describe('S3', () => {
 
         client.start((err) => {
 
+            expect(err).to.not.exist;
             const key = { id: 'x', segment: 'test' };
             client.set(key, buffer, 2000, (err) => {
 
@@ -134,6 +139,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             const key = { id: 'x', segment: 'test' };
             const value = { a: 1 };
             value.b = value;
@@ -155,6 +161,7 @@ describe('S3', () => {
 
             client.start((err) => {
 
+                expect(err).to.not.exist;
                 expect(client.isReady()).to.equal(true);
                 --x;
                 if (!x) {
@@ -190,6 +197,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             client.get(null, (err, result) => {
 
                 expect(err).to.equal(null);
@@ -205,6 +213,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             const key = { id: 'x', segment: 'test' };
             client.set(key, 'x', 1, (err) => {
 
@@ -228,6 +237,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             client.set(null, {}, 1000, (err) => {
 
                 expect(err instanceof Error).to.equal(true);
@@ -242,6 +252,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             client.get({}, (err) => {
 
                 expect(err instanceof Error).to.equal(true);
@@ -256,6 +267,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             client.set({}, {}, 1000, (err) => {
 
                 expect(err instanceof Error).to.equal(true);
@@ -270,6 +282,7 @@ describe('S3', () => {
         const client = new Catbox.Client(S3, options);
         client.start((err) => {
 
+            expect(err).to.not.exist;
             const key = { id: 'x', segment: 'test' };
             client.set(key, 'y', 0, (err) => {
 
@@ -435,6 +448,7 @@ describe('S3', () => {
 
                     s3.get(key, (err, result) => {
 
+                        expect(err).to.not.exist;
                         expect(result.item).to.equal('myvalue');
                         done();
                     });
@@ -458,11 +472,13 @@ describe('S3', () => {
 
                     s3.get(key, (err, result) => {
 
+                        expect(err).to.not.exist;
                         expect(result.item).to.equal('myvalue');
                         setTimeout(() => {
 
                             s3.get(key, (err, result) => {
 
+                                expect(err).to.not.exist;
                                 expect(result).to.not.exist;
                                 done();
                             });
@@ -481,6 +497,7 @@ describe('S3', () => {
             const client = new Catbox.Client(S3, options);
             client.start((err) => {
 
+                expect(err).to.not.exist;
                 const key = { id: 'x', segment: 'test' };
                 client.set(key, '123', 5000, (err) => {
 
@@ -505,6 +522,7 @@ describe('S3', () => {
             const client = new Catbox.Client(S3, options);
             client.start((err) => {
 
+                expect(err).to.not.exist;
                 const key = { id: 'x', segment: 'test' };
                 client.drop(key, (err) => {
 
@@ -520,6 +538,7 @@ describe('S3', () => {
             const client = new Catbox.Client(S3, options);
             client.start((err) => {
 
+                expect(err).to.not.exist;
                 const key = { id: 'x', segment: 'test' };
                 client.set(key, '123', 2000, (err) => {
 
@@ -544,6 +563,7 @@ describe('S3', () => {
             const client = new Catbox.Client(S3, options);
             client.start((err) => {
 
+                expect(err).to.not.exist;
                 client.drop({}, (err) => {
 
                     expect(err instanceof Error).to.equal(true);
@@ -558,6 +578,7 @@ describe('S3', () => {
             const client = new Catbox.Client(S3, options);
             client.start((err) => {
 
+                expect(err).to.not.exist;
                 client.drop(null, (err) => {
 
                     expect(err instanceof Error).to.equal(true);
