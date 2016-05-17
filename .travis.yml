@@ -1,0 +1,12 @@
+sudo: false
+language: node_js
+node_js:
+  - 6
+  - 5
+  - 4
+env:
+  global:
+  - secure: iqRuH8pSedR2ZuTm5+34EG6V6+wxj2Knxxlellqt28Brr2Fnhuv2JSYNe5rryRp+4ZGjovlbcqQ2hvJH6RZa829dRSUfFa1GLcxWvh2btGSi/qVh5IcWJDLrHG02qRVSpYEbC2IkJ0H5mKFaOadEdD7FsfpE5trwlaxtYJzF9LU=
+  - secure: BIaIfK9NMP3BUiZKdGaO0LeFVDvBKEyAdslP+Ubo1XOUhUw8d8SG0xA+9RU61+tkLdB/ERMfNU9sMirz97fGSZViNQQ95iLpQTtbNdwexh2VOKqcatXKBMTHj6U53X32jCWjKHlZFHJxLzCJnj7IPmqKedkI9Py8cOsle92yopU=
+  - S3_BUCKET=catbox-s3
+  - S3_REGION=eu-central-1
