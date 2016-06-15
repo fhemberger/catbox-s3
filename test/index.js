@@ -103,7 +103,7 @@ describe('S3', () => {
 
                     expect(err).to.not.exist();
                     expect(result.item instanceof Buffer).to.equal(true);
-                    expect(result.item).to.deep.equal(buffer);
+                    expect(result.item).to.equal(buffer);
                     done();
                 });
             });
@@ -126,7 +126,7 @@ describe('S3', () => {
                 client.get(key, (err, result) => {
 
                     expect(err).to.not.exist();
-                    expect(result.item).to.not.equal(buffer);
+                    expect(result.item).to.not.shallow.equal(buffer);
                     done();
                 });
             });
