@@ -71,7 +71,7 @@ describe('S3', () => {
         client.start((err) => {
 
             expect(err).to.not.exist();
-            const key = { id: 'x', segment: 'test' };
+            const key = { id: 'test/id?with special%chars', segment: 'test' };
             client.set(key, '123', 5000, (err) => {
 
                 expect(err).to.not.exist();
@@ -94,7 +94,7 @@ describe('S3', () => {
         client.start((err) => {
 
             expect(err).to.not.exist();
-            const key = { id: 'x', segment: 'test' };
+            const key = { id: 'buffer', segment: 'test' };
 
             client.set(key, buffer, 2000, (err) => {
 
@@ -119,7 +119,7 @@ describe('S3', () => {
         client.start((err) => {
 
             expect(err).to.not.exist();
-            const key = { id: 'x', segment: 'test' };
+            const key = { id: 'buffer-copied', segment: 'test' };
             client.set(key, buffer, 2000, (err) => {
 
                 expect(err).to.not.exist();
@@ -140,7 +140,7 @@ describe('S3', () => {
         client.start((err) => {
 
             expect(err).to.not.exist();
-            const key = { id: 'x', segment: 'test' };
+            const key = { id: 'circular', segment: 'test' };
             const value = { a: 1 };
             value.b = value;
 
