@@ -71,7 +71,7 @@ describe('S3', () => {
         client.start((err) => {
 
             expect(err).to.not.exist();
-            const key = { id: 'test/id?with special%chars', segment: 'test' };
+            const key = { id: 'test/id?with special%chars&', segment: 'test' };
             client.set(key, '123', 5000, (err) => {
 
                 expect(err).to.not.exist();
