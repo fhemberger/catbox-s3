@@ -1,7 +1,7 @@
 {
   "name": "catbox-s3",
   "description": "Amazon S3 adapter for catbox",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "author": "Frederic Hemberger (https://frederic-hemberger.de)",
   "main": "index.js",
   "scripts": {
@@ -31,9 +31,9 @@
   },
   "homepage": "https://github.com/fhemberger/catbox-s3",
   "dependencies": {
-    "aws-sdk": "^2.4.10",
+    "aws-sdk": "2.4.x",
     "hoek": "4.x.x",
-    "request": "^2.74.0"
+    "wreck": "9.x.x"
   },
   "devDependencies": {
     "catbox": "7.x.x",
