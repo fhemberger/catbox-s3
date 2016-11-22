@@ -32,8 +32,7 @@
   "homepage": "https://github.com/fhemberger/catbox-s3",
   "dependencies": {
     "aws-sdk": "2.4.x",
-    "hoek": "4.x.x",
-    "wreck": "9.x.x"
+    "hoek": "4.x.x"
   },
   "devDependencies": {
     "catbox": "7.x.x",

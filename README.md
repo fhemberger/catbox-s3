@@ -10,6 +10,9 @@ Amazon S3 adapter for [catbox](https://github.com/hapijs/catbox).
 - `accessKeyId` - the Amazon access key.
 - `secretAccessKey` - the Amazon secret access key.
 - `region` - the Amazon S3 region. (If you don't specify a region, the bucket will be created in US Standard.)
+- `endpoint` - the S3 endpoint URL. (If you don't specify an endpoint, the bucket will be created at Amazon S3 using the provided region if any)
+- `setACL` - defaults to true, if set to false, not acl is set for the objects
+- `ACL` - the ACL to set if setACL is not false, defaults to `public-read`
 
 
 ### Caching binary data
@@ -25,7 +28,7 @@ var Catbox = require('catbox');
 var cache  = new Catbox.Client(require('catbox-s3'), {
     accessKeyId     : /* ... */,
     secretAccessKey : /* ... */,
-    region          : /* ... */,
+    region          : /* ... (optional) */,
     bucket          : /* ... */
 });
 
