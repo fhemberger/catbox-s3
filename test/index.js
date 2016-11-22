@@ -10,11 +10,16 @@ const S3 = require('..');
 const options = {
     accessKeyId     : process.env.S3_ACCESS_KEY,
     secretAccessKey : process.env.S3_SECRET_KEY,
-    bucket          : process.env.S3_BUCKET
+    bucket          : process.env.S3_BUCKET,
+    setACL          : process.env.S3_SET_ACL && process.env.S3_SET_ACL === 'false' ? false : true
 };
 
 if (process.env.S3_REGION) {
     options.region = process.env.S3_REGION;
+}
+
+if (process.env.S3_ENDPOINT) {
+    options.endpoint = process.env.S3_ENDPOINT;
 }
 
 
@@ -49,7 +54,6 @@ describe('S3', () => {
             done();
         });
     });
-
 
     it('closes the connection', (done) => {
 
