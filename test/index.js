@@ -22,6 +22,10 @@ if (process.env.S3_ENDPOINT) {
     options.endpoint = process.env.S3_ENDPOINT;
 }
 
+if (process.env.S3_SIGNATURE_VERSION) {
+    options.signatureVersion = process.env.S3_SIGNATURE_VERSION;
+}
+
 
 // Test shortcuts
 const lab = exports.lab = Lab.script();
