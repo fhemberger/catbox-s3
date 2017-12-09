@@ -1,11 +1,11 @@
 {
   "name": "catbox-s3",
   "description": "Amazon S3 adapter for catbox",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "Frederic Hemberger (https://frederic-hemberger.de)",
   "main": "index.js",
   "scripts": {
-    "lab": "NODE_ENV=test node node_modules/.bin/lab -L --timeout 5000 --lint-warnings-threshold 99999",
+    "lab": "NODE_ENV=test node node_modules/.bin/lab -L --timeout 5000 --lint-warnings-threshold 99999 --globals SharedArrayBuffer,Atomics,WebAssembly",
     "test": "npm run lab -- test/index.js",
     "coverage": "npm run lab -- -c",
     "coverage:html": "npm run coverage -- -r html -o coverage.html"
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/fhemberger/catbox-s3",
   "dependencies": {
-    "aws-sdk": "2.4.x",
+    "aws-sdk": "^2.167.0",
     "hoek": "4.x.x"
   },
   "devDependencies": {

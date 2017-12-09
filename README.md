@@ -11,8 +11,9 @@ Amazon S3 adapter for [catbox](https://github.com/hapijs/catbox).
 - `secretAccessKey` - the Amazon secret access key.
 - `region` - the Amazon S3 region. (If you don't specify a region, the bucket will be created in US Standard.)
 - `endpoint` - the S3 endpoint URL. (If you don't specify an endpoint, the bucket will be created at Amazon S3 using the provided region if any)
-- `setACL` - defaults to true, if set to false, not acl is set for the objects
+- `setACL` - defaults to true, if set to false, not ACL is set for the objects
 - `ACL` - the ACL to set if setACL is not false, defaults to `public-read`
+- `signatureVersion` - specify signature version when using an S3 bucket that has Server Side Encryption enabled (set to either `v2`or `v4`).
 
 
 ### Caching binary data
