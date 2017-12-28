@@ -2,6 +2,7 @@
 
 Amazon S3 adapter for [catbox](https://github.com/hapijs/catbox).
 
+[![Maintainers Wanted](https://img.shields.io/badge/maintainers-wanted-red.svg)](https://github.com/fhemberger/catbox-s3/issues/56)
 [![Build Status](https://travis-ci.org/fhemberger/catbox-s3.svg?branch=master)](http://travis-ci.org/fhemberger/catbox-s3) ![Current Version](https://img.shields.io/npm/v/catbox-s3.svg)
 
 ### Options
