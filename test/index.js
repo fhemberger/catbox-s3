@@ -26,6 +26,10 @@ if (process.env.S3_SIGNATURE_VERSION) {
     options.signatureVersion = process.env.S3_SIGNATURE_VERSION;
 }
 
+if (process.env.S3_FORCE_PATH_STYLE) {
+    options.s3ForcePathStyle = process.env.S3_FORCE_PATH_STYLE;
+}
+
 
 // Test shortcuts
 const lab = exports.lab = Lab.script();
