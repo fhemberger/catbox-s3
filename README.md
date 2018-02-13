@@ -15,6 +15,9 @@ Amazon S3 adapter for [catbox](https://github.com/hapijs/catbox).
 - `setACL` - defaults to true, if set to false, not ACL is set for the objects
 - `ACL` - the ACL to set if setACL is not false, defaults to `public-read`
 - `signatureVersion` - specify signature version when using an S3 bucket that has Server Side Encryption enabled (set to either `v2`or `v4`).
+- `s3ForcePathStyle` - force path style URLs for S3 objects (default: `false`), example:
+    - virtual-hosted-style: `https://bucket.s3.example.com`
+    - path-style: `https://s3.example.com/bucket`
 
 
 ### Caching binary data
