@@ -8,8 +8,8 @@ Amazon S3 adapter for [catbox](https://github.com/hapijs/catbox).
 ### Options
 
 - `bucket` - the S3 bucket. You need to have write access for it.
-- `accessKeyId` - the Amazon access key.
-- `secretAccessKey` - the Amazon secret access key.
+- `accessKeyId` - the Amazon access key. (If you don't specify key, it will attempt to use local credentials.)
+- `secretAccessKey` - the Amazon secret access key. (If you don't specify secret, it will attempt to use local credentials.)
 - `region` - the Amazon S3 region. (If you don't specify a region, the bucket will be created in US Standard.)
 - `endpoint` - the S3 endpoint URL. (If you don't specify an endpoint, the bucket will be created at Amazon S3 using the provided region if any)
 - `setACL` - defaults to true, if set to false, not ACL is set for the objects
