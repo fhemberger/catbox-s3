@@ -5,5 +5,5 @@ jobs:
     main:
         requires: [~pr, ~commit]
         steps:
-            install: npm install
-            test: npm run test
+            - install: npm install
+            - test: npm run test
