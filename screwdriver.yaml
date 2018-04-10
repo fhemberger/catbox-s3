@@ -1,0 +1,9 @@
+shared:
+    image: node:8
+
+jobs:
+    main:
+        requires: [~pr, ~commit]
+        steps:
+            - install: npm install
+            - test: npm run test
