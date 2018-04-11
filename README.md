@@ -5,6 +5,7 @@ Amazon S3 adapter for [catbox](https://github.com/hapijs/catbox).
 [![Maintainers Wanted](https://img.shields.io/badge/maintainers-wanted-red.svg)](https://github.com/fhemberger/catbox-s3/issues/56)
 [![Build Status](https://travis-ci.org/fhemberger/catbox-s3.svg?branch=master)](http://travis-ci.org/fhemberger/catbox-s3) ![Current Version](https://img.shields.io/npm/v/catbox-s3.svg)
 
+
 ### Options
 
 - `bucket` - the S3 bucket. You need to have write access for it.
@@ -38,35 +39,31 @@ var cache  = new Catbox.Client(require('catbox-s3'), {
 });
 
 // 2) Inititalize the caching
-cache.start(function (err) {
+cache.start().catch((err) => {
 
     if (err) { console.error(err); }
     /* ... */
 });
 
 // Your route's request handler
-var handler = function (request, reply) {
+var handler = async function (request, h) {
 
     var cacheKey = {
         id      : /* cache item id */,
         segment : /* cache segment name */
     };
 
-    cache.get(cacheKey, function (err, result) {
+    const result = await cache.get(cacheKey);
 
-        if (result) {
-            return reply(result.item).type(/* response content type */);
-        }
+    if (result) {
+        return h.response(result.item).type(/* response content type */);
+    }
 
-        yourBusinessLogic(function (err, data) {
+    const data = await yourBusinessLogic();
 
-            cache.set(cacheKey, data, /* expiration in ms */, function (err) {
+    await cache.set(cacheKey, data, /* expiration in ms */);
 
-                /* ... */
-            });
-            reply(result.item).type(/* response content type */);
-        });
-    });
+    return h.response(data).type(/* response content type */);
 };
 
 ```
