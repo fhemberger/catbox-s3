@@ -118,7 +118,7 @@ describe('S3', () => {
         const value = { a: 1 };
         value.b = value;
 
-        await expect(client.set(key, value, 10)).to.reject(new Error('Could not convert to JSON'));
+        await expect(client.set(key, value, 10)).to.reject(Error, 'Could not convert object to JSON');
     });
 
 
