@@ -6,39 +6,39 @@ const Code = require('code');
 const Catbox = require('catbox');
 const S3 = require('..');
 
-
-const options = {
-    accessKeyId     : process.env.S3_ACCESS_KEY,
-    secretAccessKey : process.env.S3_SECRET_KEY,
-    bucket          : process.env.S3_BUCKET,
-    setACL          : process.env.S3_SET_ACL && process.env.S3_SET_ACL === 'false' ? false : true
-};
-
-if (process.env.S3_REGION) {
-    options.region = process.env.S3_REGION;
-}
-
-if (process.env.S3_ENDPOINT) {
-    options.endpoint = process.env.S3_ENDPOINT;
-}
-
-if (process.env.S3_SIGNATURE_VERSION) {
-    options.signatureVersion = process.env.S3_SIGNATURE_VERSION;
-}
-
-if (process.env.S3_FORCE_PATH_STYLE) {
-    options.s3ForcePathStyle = process.env.S3_FORCE_PATH_STYLE;
-}
-
+let options;
 
 // Test shortcuts
 const lab = exports.lab = Lab.script();
-const describe = lab.describe;
-const it = lab.it;
+const { beforeEach, describe, it } = lab;
 const expect = Code.expect;
 
-
 describe('S3', () => {
+
+    beforeEach(() => {
+        options = {
+            accessKeyId     : process.env.S3_ACCESS_KEY,
+            secretAccessKey : process.env.S3_SECRET_KEY,
+            bucket          : process.env.S3_BUCKET,
+            setACL          : process.env.S3_SET_ACL && process.env.S3_SET_ACL === 'false' ? false : true
+        };
+
+        if (process.env.S3_REGION) {
+            options.region = process.env.S3_REGION;
+        }
+
+        if (process.env.S3_ENDPOINT) {
+            options.endpoint = process.env.S3_ENDPOINT;
+        }
+
+        if (process.env.S3_SIGNATURE_VERSION) {
+            options.signatureVersion = process.env.S3_SIGNATURE_VERSION;
+        }
+
+        if (process.env.S3_FORCE_PATH_STYLE) {
+            options.s3ForcePathStyle = process.env.S3_FORCE_PATH_STYLE;
+        }
+    });
 
     it('throws an error if not created with new', () => {
 
@@ -68,6 +68,21 @@ describe('S3', () => {
 
 
     it('gets an item after setting it', async () => {
+
+        const client = new Catbox.Client(S3, options);
+        await client.start();
+
+        const key = { id: 'test/id?with special%chars&', segment: 'test' };
+        await client.set(key, '123', 5000);
+        const result = await client.get(key);
+
+        expect(result.item).to.equal('123');
+    });
+
+
+    it('gets an item with s3ForcePathStyle', async () => {
+
+        options.s3ForcePathStyle = true
 
         const client = new Catbox.Client(S3, options);
         await client.start();
@@ -278,6 +293,18 @@ describe('S3', () => {
         expect(result.item).to.equal('123');
     });
 
+    it('supports json values', async () => {
+
+        const client = new Catbox.Client(S3, options);
+        await client.start();
+
+        const key = { id: '', segment: 'test' };
+        const value = { a: 5 };
+        await client.set(key, value, 5000);
+        const result = await client.get(key);
+
+        expect(result.item).to.equal(value);
+    });
 
     describe('#start', () => {
 
