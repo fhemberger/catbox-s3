@@ -224,6 +224,15 @@ describe('S3', () => {
         await expect(client.get(key)).to.reject();
     });
 
+    it('errors on set when stopped', async () => {
+
+        const client = new Catbox.Client(S3, options);
+        client.stop();
+        const key = { id: 'x', segment: 'test' };
+
+        await expect(client.connection.set(key, 'y', 1)).to.reject();
+    });
+
 
     it('errors on missing segment name', () => {
 
