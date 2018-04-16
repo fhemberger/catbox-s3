@@ -56,14 +56,14 @@ var handler = async function (request, h) {
     const result = await cache.get(cacheKey);
 
     if (result) {
-        return h.response(result.item).code(/* response content type */);
+        return h.response(result.item).type(/* response content type */);
     }
 
     const data = await yourBusinessLogic();
 
     await cache.set(cacheKey, data, /* expiration in ms */);
 
-    return h.response(data).code(/* response content type */);
+    return h.response(data).type(/* response content type */);
 };
 
 ```
