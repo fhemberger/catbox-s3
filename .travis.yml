@@ -1,12 +1,11 @@
 sudo: false
 language: node_js
 node_js:
-  - 9
-  - 8
-  - 6
+- 9
+- 8
 env:
   global:
-  - secure: iqRuH8pSedR2ZuTm5+34EG6V6+wxj2Knxxlellqt28Brr2Fnhuv2JSYNe5rryRp+4ZGjovlbcqQ2hvJH6RZa829dRSUfFa1GLcxWvh2btGSi/qVh5IcWJDLrHG02qRVSpYEbC2IkJ0H5mKFaOadEdD7FsfpE5trwlaxtYJzF9LU=
-  - secure: BIaIfK9NMP3BUiZKdGaO0LeFVDvBKEyAdslP+Ubo1XOUhUw8d8SG0xA+9RU61+tkLdB/ERMfNU9sMirz97fGSZViNQQ95iLpQTtbNdwexh2VOKqcatXKBMTHj6U53X32jCWjKHlZFHJxLzCJnj7IPmqKedkI9Py8cOsle92yopU=
-  - S3_BUCKET=catbox-s3
+  - S3_BUCKET=catbox-s3.fhemberger.github.com
   - S3_REGION=eu-central-1
+  - secure: ByD+bryRnPpWLjiFkhSrGEgghZkJIf3h3q9i3czfGT2Sw0SfKQexGlo9Cdo206EUv4xUP57xb0BHwM92T8/gsu28dvGjg/QCy3plf8fvryxrYxYMUg+uF/IryD99vxnfHA3jmQvTQtCCXvTsh/2jmmUrURdqu0U46k+r6p+PifA=
+  - secure: DnuYtbXieLTzRinbroyQYOjz1zZiXjtLpjBsvESyQX/uaSBWB489YXZbZ8p1lCtG5js9yYbUlNkTK+8tzCDyGnsszKm9QiVuFn6zrCBqNxfR2kq2zplEYwtzRUoIL4+k5YLoPQ21NsMQ4uTNKM1n3zHk/6ygI5xudfvoK/zXdXo=

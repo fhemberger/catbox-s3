@@ -16,6 +16,7 @@ const expect = Code.expect;
 describe('S3', () => {
 
     beforeEach(() => {
+
         options = {
             accessKeyId     : process.env.S3_ACCESS_KEY,
             secretAccessKey : process.env.S3_SECRET_KEY,
@@ -53,7 +54,7 @@ describe('S3', () => {
     it('creates a new connection', async () => {
 
         const client = new Catbox.Client(S3, options);
-        await client.start()
+        await client.start();
         expect(client.isReady()).to.equal(true);
     });
 
@@ -82,7 +83,7 @@ describe('S3', () => {
 
     it('gets an item with s3ForcePathStyle', async () => {
 
-        options.s3ForcePathStyle = true
+        options.s3ForcePathStyle = true;
 
         const client = new Catbox.Client(S3, options);
         await client.start();
@@ -454,7 +455,7 @@ describe('S3', () => {
         });
 
 
-        it('errors on drop when stopped', async () => {
+        it('errors on drop when stopped', () => {
 
             const client = new Catbox.Client(S3, options);
             client.stop();
@@ -464,7 +465,7 @@ describe('S3', () => {
         });
 
 
-        it('errors when cache item dropped while stopped', async () => {
+        it('errors when cache item dropped while stopped', () => {
 
             const client = new Catbox.Client(S3, options);
             client.stop();

@@ -5,6 +5,9 @@
     "node": true,
     "es6": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
   "rules": {
     "complexity": [1, 8],
     "consistent-return": 0,
