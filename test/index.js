@@ -5,8 +5,11 @@ const Lab = require('lab');
 const Code = require('code');
 const Catbox = require('catbox');
 const S3 = require('..');
+const AWS = require('aws-sdk');
+const crypto = require('crypto');
 
 let options;
+let awsClient;
 
 // Test shortcuts
 const lab = exports.lab = Lab.script();
@@ -39,6 +42,8 @@ describe('S3', () => {
         if (process.env.S3_FORCE_PATH_STYLE) {
             options.s3ForcePathStyle = process.env.S3_FORCE_PATH_STYLE;
         }
+
+        awsClient = new AWS.S3(options);
     });
 
     it('throws an error if not created with new', () => {
@@ -80,6 +85,25 @@ describe('S3', () => {
         expect(result.item).to.equal('123');
     });
 
+    it('gets metadata of an item after setting it', async () => {
+        const testVal = 'testingmd5string';
+        const expectedmd5 = crypto.createHash('md5').update(testVal).digest('hex');
+
+        const client = new Catbox.Client(S3, options);
+        await client.start();
+
+        const key = { id: 'test/id?with special%chars&', segment: 'test' };
+        await client.set(key, testVal, 5000);
+
+        const params = {
+            Bucket : options.bucket,
+            Key    : 'test/test/id~with special~chars~'
+        };
+
+        awsClient.headObject(params, (err, data) => {
+            expect(data.Metadata.md5).to.equal(expectedmd5);
+        });
+    });
 
     it('gets an item with s3ForcePathStyle', async () => {
 
